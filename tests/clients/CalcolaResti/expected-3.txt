@@ -1,0 +1,2 @@
+<100 x 1 cent, 76 x 2 cents>
+insufficient-value

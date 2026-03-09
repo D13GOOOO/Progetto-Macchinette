@@ -1,0 +1,23 @@
+{
+	"name": "Java",
+	"image": "mcr.microsoft.com/devcontainers/base:latest",
+
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "25",
+			"installMaven": "false",
+			"installGradle": "false"
+		}
+	},
+
+  "updateContentCommand": "sudo apt-get update && sudo apt-get install -y libfreetype6 libfreetype6-dev fontconfig libx11-6 libxext6 libxrender1",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "ritwickdey.LiveServer"
+    	]
+    }
+  }
+}

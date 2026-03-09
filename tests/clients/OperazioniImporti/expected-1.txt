@@ -1,0 +1,11 @@
+1 unit
+invalid-result
+3 units 25 cents
+2 units 20 cents
+invalid-result
+12 units 75 cents
+negative-result
+1
+invalid-result
+3 units
+invalid-result

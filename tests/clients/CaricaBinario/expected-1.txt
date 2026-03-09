@@ -1,0 +1,8 @@
+<-, M, 0, 100>
+size
+capacity
+<<Acqua, 1 unit, M>, M, 10, 100>
+item
+<<Acqua, 1 unit, M>, M, 90, 100>
+capacity
+<<Acqua, 1 unit, M>, M, 100, 100>

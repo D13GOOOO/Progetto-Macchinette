@@ -1,0 +1,129 @@
+// plugins, versions, repositories, source sets, configurations and dependencies
+
+plugins {
+  id 'java'
+  id 'application'
+  id 'jacoco'
+  id 'com.diffplug.spotless' version '8.0.0'
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(25)
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    url = uri('https://gitlab.di.unimi.it/api/v4/projects/7715/packages/maven')
+  }
+}
+
+configurations {
+  umlDoclet
+}
+
+dependencies {
+  testImplementation 'it.unimi.di.prog2:jubbiot:0.4a1'
+  testImplementation 'org.junit.jupiter:junit-jupiter:6.0.0'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  umlDoclet 'nl.talsmasoftware:umldoclet:2.2.3'
+}
+
+// plugin configurations
+
+def defaultMain = 'SalveMondo'
+application {
+  mainClass = providers.gradleProperty('mainClass').getOrElse(defaultMain)
+}
+
+run {
+  standardInput = System.in
+}
+
+spotless {
+  enforceCheck = false
+  java {
+    googleJavaFormat('1.28.0')
+    removeUnusedImports()
+    leadingTabsToSpaces(2)
+    endWithNewline()
+    licenseHeaderFile('src/licenseHeaderFile.txt')
+  }
+}
+
+// custom tasks
+
+tasks.register('cleanActual', Delete) {
+  delete fileTree('tests').matching {
+    include '**/actual-*.txt'
+  }
+}
+
+tasks.register('consegna', Zip) {
+  dependsOn build, javadoc
+  group = 'Exam'
+  description = 'Creates a ZIP archive with the main source code of the project to be uploaded to the exam platform.'
+  archiveFileName.set('consegna.zip')
+  destinationDirectory.set(layout.projectDirectory)
+  from sourceSets.main.allJava
+}
+
+// general task configurations (by type)
+
+tasks.withType(JavaCompile).configureEach {
+  options.encoding = 'UTF-8'
+  options.compilerArgs += ['-Xlint:all', '-Werror']
+}
+
+tasks.withType(JavaExec).configureEach {
+  systemProperty 'user.language', 'ROOT'
+  systemProperty 'file.encoding', 'UTF-8'
+  defaultCharacterEncoding = 'UTF-8'
+  enableAssertions = !providers.gradleProperty('disableAssertions').isPresent()
+}
+
+tasks.withType(Test).configureEach {
+  systemProperty 'user.language', 'ROOT'
+  systemProperty 'file.encoding', 'UTF-8'
+  defaultCharacterEncoding = 'UTF-8'
+  useJUnitPlatform()
+  testLogging { events 'skipped', 'failed' }
+}
+
+// specific task configurations (by name and type)
+
+tasks.named('clean', Delete).configure {
+  dependsOn(tasks.named('cleanActual'))
+}
+
+tasks.named('javadoc', Javadoc).configure {
+  exclude('clients/**')
+  options {
+    description = 'Generates Javadoc API documentation and UML diagrams for the main source code.'
+    encoding = 'UTF-8'
+    charSet = 'UTF-8'
+    links = [ 'https://docs.oracle.com/en/java/javase/25/docs/api/' ]
+    docTitle = 'Macchinette'
+    overview = 'src/overview.html'
+    header = "<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>"
+    doclet = 'nl.talsmasoftware.umldoclet.UMLDoclet'
+    docletpath = configurations.umlDoclet.files.asType(List)
+    showFromPrivate()
+    addBooleanOption('Xdoclint:all', true)
+    addBooleanOption('Werror', true)
+    addBooleanOption('-allow-script-in-comments', true)
+  }
+}
+
+tasks.named('test', Test).configure {
+  finalizedBy(jacocoTestReport)
+  testLogging {
+    afterSuite { desc, result ->
+      if (!desc.parent) {
+        println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+      }
+    }
+  }
+}

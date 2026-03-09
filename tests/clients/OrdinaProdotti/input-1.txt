@@ -1,0 +1,7 @@
+Bibita|2|S
+Patatine|2.50|M
+Panino|4.50|L
+Crostata|1.50|M
+Noccioline|3|S
+Acqua|1|S
+Bibita|1.50|S

@@ -1,0 +1,2 @@
+<10 x 5 cents, 10 x 10 cents, 10 x 20 cents, 10 x 1 unit>
+change-not-possible

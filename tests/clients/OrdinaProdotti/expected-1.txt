@@ -1,0 +1,7 @@
+<Acqua, 1 unit, S>
+<Bibita, 1 unit 50 cents, S>
+<Bibita, 2 units, S>
+<Noccioline, 3 units, S>
+<Crostata, 1 unit 50 cents, M>
+<Patatine, 2 units 50 cents, M>
+<Panino, 4 units 50 cents, L>

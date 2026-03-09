@@ -1,0 +1,6 @@
+<10 x 20 cents, 5 x 50 cents, 20 x 1 unit, 10 x 2 units>
+<10 x 20 cents, 5 x 50 cents, 20 x 1 unit, 9 x 2 units>
+missing-coins
+missing-value
+missing-coins
+<8 x 20 cents, 3 x 50 cents, 18 x 1 unit, 7 x 2 units>

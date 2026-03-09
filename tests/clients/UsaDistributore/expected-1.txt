@@ -1,0 +1,29 @@
++ 0
++ 0
+- change
++ 0
+? 0 | Bibita | 2 units
+? 1 | Patatine | 2 units 50 cents
+? 2 | Panino | 3 units 20 cents
+- empty
++ 0
+- <1 x 1 unit, 1 x 2 units>
+? 0 | Bibita | 2 units
+? 1 | Patatine | 2 units 50 cents
+? 2 | Panino | 3 units 20 cents
+? 5 | Panino | 3 units 20 cents
+- <1 x 50 cents>
++ 0
+? 0 | Bibita | 2 units
+? 1 | Patatine | 2 units 50 cents
+? 2 | Panino | 3 units 20 cents
+? 5 | Panino | 3 units 20 cents
+? 8 | Extra | 10 units
++ 2
+- value
+? 0 | Bibita | 2 units
+? 1 | Patatine | 2 units 50 cents
+? 2 | Panino | 3 units 20 cents
+? 5 | Panino | 3 units 20 cents
+? 8 | Extra | 10 units
+- slot

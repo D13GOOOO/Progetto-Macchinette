@@ -1,0 +1,7 @@
+1; Panino @ 4.50 @ XL
+101; Snack @ .50 @ S
+10; Acqua @ 1 @ M
+20; Bibita @ 1.50 @ S
+80; Acqua @ 1 @ M
+11; Acqua @ 1 @ M
+10; Acqua @ 1 @ M

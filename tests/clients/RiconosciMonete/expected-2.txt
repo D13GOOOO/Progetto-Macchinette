@@ -1,0 +1,6 @@
+5 cents
+invalid-amount
+10 cents
+1 unit
+invalid-amount
+2 units

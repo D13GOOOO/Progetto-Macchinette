@@ -1,0 +1,4 @@
+<10 x 20 cents, 5 x 50 cents, 20 x 1 unit, 10 x 2 units>
+<10 x 20 cents, 5 x 50 cents, 20 x 1 unit, 11 x 2 units>
+<5 x 1 cent, 10 x 20 cents, 5 x 50 cents, 20 x 1 unit, 11 x 2 units>
+<5 x 1 cent, 2 x 10 cents, 10 x 20 cents, 8 x 50 cents, 24 x 1 unit, 11 x 2 units>

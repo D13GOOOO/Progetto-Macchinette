@@ -1,0 +1,2 @@
+<1 x 2 cents, 1 x 50 cents, 1 x 2 units>
+insufficient-value
